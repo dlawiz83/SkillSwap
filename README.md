@@ -32,15 +32,20 @@ SkillSwap solves this by enabling users to create skill profiles showing what th
 
 [https://skill-swap-rosy-alpha.vercel.app/](https://skill-swap-rosy-alpha.vercel.app/)
 
-## How to Run Locally
 
-Clone the repository  
+## Screenshots
 
-git clone <https://github.com/dlawiz83/SkillSwap>
+### About Page
+![About Page](assets/Landing.png)
 
-cd skillswap
+### Login Screen
+![Login Screen](assets/login.png)
 
-npm install
+### Home Page
+![Home Page](assets/Home.png)
 
-npm start
+### Match
+![Match Requests](assets/Matches.png)
+
+
 

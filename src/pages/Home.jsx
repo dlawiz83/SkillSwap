@@ -7,11 +7,12 @@ import {
   addDoc,
 } from "firebase/firestore";
 import { db, auth } from "../firebase/firebaseConfig";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [skillCards, setSkillCards] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [message, setMessage] = useState({ text: "", type: "" });
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -34,11 +35,19 @@ export default function Home() {
     );
 
   const handleMatchRequest = async (toUserId, cardId, card) => {
-    if (!user) return alert("Please log in to request a match.");
+    if (!user) {
+      setMessage({ text: "Please log in to request a match.", type: "error" });
+      return;
+    }
 
     const senderCard = skillCards.find((c) => c.uid === user.uid);
-    if (!senderCard)
-      return alert("Please fill out your skill card before requesting a match.");
+    if (!senderCard) {
+      setMessage({
+        text: "Please fill out your skill card before requesting a match.",
+        type: "error",
+      });
+      return;
+    }
 
     try {
       const matchQuery = query(
@@ -49,8 +58,10 @@ export default function Home() {
         where("status", "==", "pending")
       );
       const matchSnapshot = await getDocs(matchQuery);
-      if (!matchSnapshot.empty)
-        return alert("You already sent a request for this skill.");
+      if (!matchSnapshot.empty) {
+        setMessage({ text: "You already sent a request for this skill.", type: "error" });
+        return;
+      }
 
       await addDoc(collection(db, "matchRequests"), {
         fromUserId: user.uid,
@@ -70,12 +81,20 @@ export default function Home() {
         toLearn: card.learn,
       });
 
-      alert("Match request sent!");
+      setMessage({ text: "Match request sent!", type: "success" });
     } catch (err) {
       console.error("Error sending request:", err);
-      alert("Something went wrong.");
+      setMessage({ text: "Something went wrong.", type: "error" });
     }
   };
+
+  // Clear message after 4 seconds
+  useEffect(() => {
+    if (message.text) {
+      const timer = setTimeout(() => setMessage({ text: "", type: "" }), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 px-6 py-10">
@@ -96,6 +115,24 @@ export default function Home() {
       >
         Learn Something. Teach Something.
       </motion.h2>
+
+      {/* Message box */}
+      <AnimatePresence>
+        {message.text && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className={`mb-6 max-w-xl mx-auto px-6 py-3 rounded text-center font-semibold ${
+              message.type === "error"
+                ? "bg-red-500 text-white"
+                : "bg-green-500 text-white"
+            }`}
+          >
+            {message.text}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <motion.div
         className="flex justify-center mb-12"
@@ -142,9 +179,7 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() =>
-                  handleMatchRequest(card.uid, card.id, card)
-                }
+                onClick={() => handleMatchRequest(card.uid, card.id, card)}
                 className="mt-4 bg-orange-500 hover:bg-orange-600 transition-colors text-white px-4 py-2 rounded-full font-semibold shadow-md"
               >
                 Request Match

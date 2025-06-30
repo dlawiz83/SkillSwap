@@ -239,7 +239,7 @@ export default function Matches() {
                 return (
                   <Card key={match.id}>
                     <h3 className="text-xl font-semibold mb-2">{otherName}</h3>
-                    <p className="text-sm mb-1"><strong>Email:</strong> {otherEmail}</p>
+                   
                     <p className="text-sm mb-1"><strong>Wants to Learn:</strong> {otherLearn}</p>
                     <p className="text-sm"><strong>Can Teach:</strong> {otherTeach}</p>
                     <p className="text-back font-semibold mt-4 select-none">Matched</p>

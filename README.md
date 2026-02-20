@@ -1,51 +1,40 @@
-# SkillSwap
+# 🚀 SkillSwap
 
-SkillSwap is a community-driven web platform that connects learners and teachers by matching users who want to learn new skills with others willing to teach those skills. It encourages peer-to-peer knowledge exchange to empower community growth.
+**The Currency of Knowledge. Stop Paying. Start Swapping.**
 
-## Problem
+![SkillSwap Banner](https://via.placeholder.com/1200x400/0f172a/ffffff?text=SkillSwap:+Peer-to-Peer+Learning+Economy)
 
-Finding trustworthy, motivated people to learn new skills from or teach to is often difficult, especially without a centralized platform for direct connections.
+## 📖 The Vision
 
-## Solution
+**The Problem:** I wanted to learn Spanish, but tutors were expensive. I offered to teach coding in exchange, but finding a reliable partner was a nightmare. 
+**The Solution:** SkillSwap is a decentralized, peer-to-peer learning platform that eliminates the financial barrier to education. We believe that everyone is an expert at something and a beginner at something else. Instead of paying $50/hour, SkillSwap uses a smart matching algorithm and a barter economy to connect learners directly.
 
-SkillSwap solves this by enabling users to create skill profiles showing what they want to learn and teach. Users can browse profiles, send match requests, and chat in real time to coordinate learning sessions, fostering a collaborative learning community.
+## ✨ The "Wow" Features
 
-## Key Features
+* **🧠 Smart-Match Engine:** Actively finds your perfect partner. If you want to learn Python and teach Guitar, SkillSwap instantly surfaces users who want to learn Guitar and teach Python, ranked by compatibility.
+* **🛡️ The Karma Economy:** You start with 5 Karma. You spend 1 Karma to book a session to learn. You earn 1 Karma when you teach a session. This prevents "leechers" and rewards knowledge sharing.
+* **⚡ The Live Dojo:** An immersive, in-browser learning environment. No need for external Zoom links. Features integrated WebRTC video chat, a real-time messaging system, and a toggleable workspace (Monaco Code Editor for tech skills, Shared Notes for languages/arts).
+* **📅 Frictionless Scheduling:** Users set their weekly availability. When booking, the app dynamically pulls the peer's available slots and handles the Karma transaction automatically.
+* **💬 Real-Time Inbox:** Continue the conversation outside the Dojo with an instant, Firestore-powered messaging system.
 
-- **Search & Discovery:** Filter users by skills to learn or teach  
-- **Match Requests:** Send and manage skill exchange requests  
-- **Request Management:** Accept or reject incoming requests with status tracking  
-- **Accepted Matches:** Access chat with matched users  
-- **Real-time Chat:** Seamless communication within the platform  
+## 🛠️ The Tech Stack
 
-## Technologies Used
+Built for speed, scale, and a premium user experience.
 
-- **React + Vite** – Frontend UI with reusable components  
-- **Firebase Authentication** – Secure user sign-in and authorization  
-- **Firebase Firestore** – NoSQL database for profiles, matches, and chat data  
-- **Firestore Real-time Listeners** – Live updates on requests and chat  
-- **React Router** – Navigation between pages  
-- **Tailwind CSS** – Utility-first responsive styling  
-- **JavaScript (ES6+)** – Core frontend logic and Firebase integration  
+* **Frontend:** React (Vite) for blazing-fast performance.
+* **Styling:** Tailwind CSS for a clean, modern, minimalist aesthetic.
+* **Icons:** Lucide-React for professional, consistent iconography.
+* **Backend & Auth:** Firebase (Authentication, Firestore Database, Real-time Listeners).
+* **IDE Integration:** `@monaco-editor/react` (The engine behind VS Code).
+* **Video Integration:** `react-webcam` for local media stream handling.
 
-## Live Demo
+## 🚀 Getting Started (Local Development)
 
-[https://skill-swap-rosy-alpha.vercel.app/](https://skill-swap-rosy-alpha.vercel.app/)
+Want to run SkillSwap on your own machine? Follow these steps:
 
-
-## Screenshots
-
-### About Page
-![About Page](assets/Landing.png)
-
-### Login Screen
-![Login Screen](assets/login.png)
-
-### Home Page
-![Home Page](assets/Home.png)
-
-### Match
-![Match Requests](assets/Matches.png)
-
-
-
+### 1. Clone the repository
+```bash
+git clone [https://github.com/YOUR_USERNAME/skillswap.git](https://github.com/YOUR_USERNAME/skillswap.git)
+cd skillswap
+npm install
+npm run dev

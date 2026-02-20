@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --border: 214.3 31.8% 91.4%; /* Slate-200 */
+  }
+
+  body {
+    @apply bg-white text-slate-900 antialiased;
+  }
+
+  
+  input:focus,
+  textarea:focus,
+  button:focus {
+    @apply outline-none ring-2 ring-slate-400 ring-offset-2;
+  }
+}

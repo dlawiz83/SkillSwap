@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth, db } from "../lib/firebase"; 
+import { auth, db } from "../lib/firebase";
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -19,15 +20,14 @@ export function AuthProvider({ children }) {
   const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // 1. Sign Up Function
+  // Sign Up Function
   async function signup(email, password, name) {
     const result = await createUserWithEmailAndPassword(auth, email, password);
-    // Create the user document in Firestore immediately
     await setDoc(doc(db, "users", result.user.uid), {
       uid: result.user.uid,
       name: name,
       email: email,
-      karma: 5, // Start with 5 Karma points
+      karma: 5,
       skillsTeaching: [],
       skillsLearning: [],
       joined: new Date().toISOString(),
@@ -35,22 +35,26 @@ export function AuthProvider({ children }) {
     return result;
   }
 
-  // 2. Login Function
+  // Login Function
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
-  // 3. Logout
+  // 2. Password Reset Function
+  function resetPassword(email) {
+    return sendPasswordResetEmail(auth, email);
+  }
+
+  // Logout
   function logout() {
     return signOut(auth);
   }
 
-  // 4. Listen to User State
+  // Listen to User State
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
       if (user) {
-        // Fetch extra profile data (Skills, Karma)
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -70,6 +74,7 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    resetPassword, // 3. Added to value object
   };
 
   return (

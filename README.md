@@ -2,6 +2,8 @@
 
 **The Currency of Knowledge. Stop Paying. Start Swapping.**
 
+🔗 **Live Demo:** [Click here to try SkillSwap](https://your-firebase-url.web.app)
+
 ![SkillSwap Banner](https://via.placeholder.com/1200x400/0f172a/ffffff?text=SkillSwap:+Peer-to-Peer+Learning+Economy)
 
 ## 📖 The Vision

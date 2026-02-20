@@ -6,7 +6,7 @@
 
 ## 📖 The Vision
 
-**The Problem:** I wanted to learn Spanish, but tutors were expensive. I offered to teach coding in exchange, but finding a reliable partner was a nightmare.
+**The Problem:** I’ve always believed learning is a kind of superpower, but finding the right people to learn from or teach felt lonely and frustrating at times. I wanted to build more than just another app; I wanted to create a welcoming community where people connect, share skills, and grow together. SkillSwap was born from that desire to make learning feel human and meaningful.
 **The Solution:** SkillSwap is a decentralized, peer-to-peer learning platform that eliminates the financial barrier to education. We believe that everyone is an expert at something and a beginner at something else. Instead of paying $50/hour, SkillSwap uses a smart matching algorithm and a barter economy to connect learners directly.
 
 ## ✨ The "Wow" Features
@@ -35,7 +35,7 @@ Want to run SkillSwap on your own machine? Follow these steps:
 ### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/skillswap.git](https://github.com/dlawiz83/SkillSwap.git)
+git clone https://github.com/dlawiz83/SkillSwap.git
 cd skillswap
 npm install
 npm run dev

@@ -62,7 +62,7 @@ to connect learners directly.
 
 ## 🎥 Demo Video
 
-Watch a 2-minute walkthrough of the full platform:
+See the full real-time workflow in action:
 
 [▶️ Watch the Demo](https://youtu.be/VVe2opNaZKE)
 
